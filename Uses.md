@@ -27,4 +27,4 @@ Throughout the scenarios below documents can be replaced by any database collect
 * **IBM** - Providing the operational log analysis engine for Bluemix Apps
 * **Activision** - Leveraging social data to improve video game customer support
 
-For more information about the uses of Elastic Search [https://www.elastic.co/blog/found-uses-of-elasticsearch](https://www.elastic.co/blog/found-uses-of-elasticsearch).
+For more information about the uses of Elastic Search [https://www.elastic.co/blog/found-uses-of-elasticsearch](https://www.elastic.co/blog/found-uses-of-elasticsearch) and for more users of Elasticsearch checkout [https://www.elastic.co/use-cases](https://www.elastic.co/use-cases).
