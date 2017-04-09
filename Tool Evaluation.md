@@ -13,7 +13,7 @@
 | Criteria | Rating  | Reason for Rating |
 |--------- | ------- | ----------------- |
 | Time to install | 5 | It takes less than 30 minutes to get Elasticsearch up and running with basic command line and system path experience. |
-| User friendliness | 2 | There is a steep learning curve for interacting with Elasticsearch and even |
-| Learning curve | 2 | |
-| UI | 2 | |
-| Capabilities (number of uses) | 5 | |
+| User friendliness | 2 | Another tool must be installed to interact with Elasticsearch, and the JSON request bodies have to be formatted exactly correct for the request to work (sometimes you can use JSON pretty format and sometimes you cannnot otherwise the request won't work).|
+| Learning curve | 2 | Elasticsearch has 4 different APIs and a multitude of capabilities through these APIs and HTTP requests. To learn and understand how to accomplish a task may require complex JSON code. |
+| UI | 3 | There are UIs available for interacting with Elasticsearch, such as Fiddler, Sense, RESTClient, or Kibana. However, they have to be installed separately from Elasticsearch. |
+| Capabilities (number of uses) | 5 | Elasticsearch has 4 different APIs (see [Running Tool.md](Running Tool.md)) and 6 different major uses (see [Uses.md](Uses.md)), including at least 100 enterprise users (like Dell and Github). |
