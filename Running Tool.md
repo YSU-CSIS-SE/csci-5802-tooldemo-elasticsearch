@@ -47,7 +47,20 @@ The steps to setup and run Elasticsearch in Windows are as follows (for setup st
     "tagline" : "You Know, for Search"
   }
   ```
+7. Now that Elasticsearch is up and running we can interact with its JSON based REST API using any HTTP client to talk to it (curl, [Fiddler](https://www.telerik.com/download/fiddler), [RESTClient](https://addons.mozilla.org/en-US/firefox/addon/restclient/)). We will use Chrome's [Sense](https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgmfcfig?hl=en) plugin, because it is simple to use and get up and running.
 
-7. Move to the next section to learn how to use some useful API features and to learn about all of the APIs and features Elasticsearch has to offer.
+8. Install Sense as any other Chrome plugin by following the link above.
+
+9. Once you have installed Sense you'll find Sense's icon in the upper right corner in Chrome. Click on that icon and you should see the following.
+
+  ![Sense Start](/images/sensestart.png)
+
+## Elasticsearch Index
+
+## Searching
+
+## Filtering
+
+## Mapping
 
 ## APIs and Their Uses
