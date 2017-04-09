@@ -12,9 +12,8 @@
 
 | Criteria | Rating  | Reason for Rating |
 |--------- | ------- | ----------------- |
-| Time to install | | |
-| User friendliness | | |
-| Learning curve | | |
-| Ease of use | | |
-| UI | | |
-| Capabilities (number of uses) | | |
+| Time to install | 5 | It takes less than 30 minutes to get Elasticsearch up and running with basic command line and system path experience. |
+| User friendliness | 2 | There is a steep learning curve for interacting with Elasticsearch and even |
+| Learning curve | 2 | |
+| UI | 2 | |
+| Capabilities (number of uses) | 5 | |

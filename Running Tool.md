@@ -47,20 +47,125 @@ The steps to setup and run Elasticsearch in Windows are as follows (for setup st
     "tagline" : "You Know, for Search"
   }
   ```
-7. Now that Elasticsearch is up and running we can interact with its JSON based REST API using any HTTP client to talk to it (curl, [Fiddler](https://www.telerik.com/download/fiddler), [RESTClient](https://addons.mozilla.org/en-US/firefox/addon/restclient/)). We will use Chrome's [Sense](https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgmfcfig?hl=en) plugin, because it is simple to use and get up and running.
+7. Now that Elasticsearch is up and running we can interact with its JSON based REST API using any HTTP client to talk to it (curl, [Sense](https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgmfcfig?hl=en), [RESTClient](https://addons.mozilla.org/en-US/firefox/addon/restclient/)). We will use [Fiddler](https://www.telerik.com/download/fiddler).
 
-8. Install Sense as any other Chrome plugin by following the link above.
+8. Follow the Fiddler link above and download the .exe file to install Fiddler on Windows.
 
-9. Once you have installed Sense you'll find Sense's icon in the upper right corner in Chrome. Click on that icon and you should see the following.
+9. Launch the downloaded .exe file and follow the steps to install Fiddler to completion.
 
-  ![Sense Start](/images/sensestart.png)
+9. Once you have installed Fiddler, launch it.
+
+  ![Fiddler Start](/images/fiddlerstart.png)
 
 ## Elasticsearch Index
+Let's add some data to our Elasticsearch server. To index a first JSON object we make a POST request to the REST API: `http://localhost:9200/<index>/<type>/[<id>]`.
+
+Index and type are required while the id part is optional If there isn't an index with that name on the server already one will be created using default configuration.
+
+We index the following movie with the following Fiddler set up:
+
+![Fiddler Index](/images/fiddlerindex.png)
+
+Our index name is **movies**, type name is **movie**, and id is **1**. Press execute to make the request.
+
+You may double click on the completed process on the left in order to view the request response data:
+
+![Fiddler Index Response](/images/fiddlerindexresponse.png)
+
+To delete any index, type, or id JSON object execute `DELETE http://localhost:9200/<index>/<type>/[<id>]` without a request body.
 
 ## Searching
+Once we have data on our server we may query it using many different requests. We will focus on searching to give an idea of how querying works.
 
-## Filtering
+We only have 1 movie in our data, so let us make a few more `POST http://localhost:9200/movies/movie/[<id>]` calls with the following request bodies.
 
-## Mapping
+```
+{
+    "title": "Apocalypse Now",
+    "director": "Francis Ford Coppola",
+    "year": 1979
+}
+
+{
+    "title": "Lawrence of Arabia",
+    "director": "David Lean",
+    "year": 1962
+}
+
+{
+    "title": "To Kill a Mockingbird",
+    "director": "Robert Mulligan",
+    "year": 1962
+}
+```
+
+You may also use bulk add: `POST http://localhost:9200/movies/_bulk` with a specialized request body.
+
+In order to search with ElasticSearch we make requests using `POST http://localhost:9200/<index>/<type>/_search` where index and type are both optional (they change where we are searching across, all indices, all types in an index, or all ids of a certain type).
+
+In order to make a more useful search request (instead of returning all indices, types, or ids) we also need to supply a request body with a query. The request body should be a JSON object which looks like
+
+```
+{
+    "query": {
+        //Query DSL here
+    }
+}
+```
+
+in which we can use ElasticSearch's query DSL (many different Query DSLs can be found in the Search APIs).
+
+For example, we search for the word "kill" in all of our movie type documents using:
+
+```
+POST http://localhost:9200/movies/movie/_search
+
+{
+    "query": {
+        "query_string": {
+            "query": "kill"
+        }
+    }
+}
+```
+
+Giving the following response:
+
+```
+{
+  "took":31,
+  "timed_out":false,
+  "_shards":{
+    "total":5,
+    "successful":5,
+    "failed":0
+  },
+  "hits":{
+    "total":1,
+    "max_score":0.66747504,
+    "hits":[{
+      "_index":"movies",
+      "_type":"movie",
+      "_id":"4",
+      "_score":0.66747504,
+      "_source":{
+        "title": "To Kill a Mockingbird",
+        "director": "Robert Mulligan",
+        "year": 1962
+      }
+    }]
+  }
+}
+```
 
 ## APIs and Their Uses
+We've barely scratched the surface of the capabilities of Elasticsearch in this short tutorial. See the table below for a list of APIs and a short description of their capabilities.
+
+| API  | Description |
+|--------- | ----------------- |
+| Index/Get API |  API for creating, updating, and retrieving JSON objects. |
+| Search API | API for searching content in Elasticsearch. Either a user can search by sending a get request with query string as a parameter or a query in the message body of post request. Mainly all the search APIs are multi-index, multi-type (uses Query DSL). |
+| Aggregations Framework/API | Framework to collect all the data selected by the search query. This framework consists of many building blocks, which help in building complex summaries of the data (avg, cardinality, and stats aggregations). |
+| Cluster API | This API is used for getting information about and making changes to a cluster and its nodes. |
+
+For more information and comprehensive tutorials for Elasticsearch see [http://joelabrahamsson.com/elasticsearch-101/](http://joelabrahamsson.com/elasticsearch-101/) and [https://www.tutorialspoint.com/elasticsearch/index.htm](https://www.tutorialspoint.com/elasticsearch/index.htm).
