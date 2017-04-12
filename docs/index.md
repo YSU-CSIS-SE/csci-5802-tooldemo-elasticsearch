@@ -12,4 +12,4 @@ To checkout the use cases of Elastic Search navigate to the [**Installation**](r
 For our evaluation of the Elastic Search tool navigate to the [**Evaluation**](toolEvaluation.md) page.
 
 ## Links and Notable Users
-For some links to more information and to see some notable users of Elastic Search head over to [**Further Information**](furtherReferences,md).
+For some links to more information and to see some notable users of Elastic Search head over to [**Further Information**](furtherReferences.md).
