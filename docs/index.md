@@ -4,3 +4,9 @@ The source code for Elastic Search can be found on github at [https://github.com
 
 ## Use Cases
 To checkout the use cases of Elastic Search navigate to the [**Uses**](uses.md) page.
+
+## How to install and run Elastic Search
+To checkout the use cases of Elastic Search navigate to the [**Installation**](runningTool.md) page.
+
+## Our Evaluation of Elastic Search
+For our evaluation of the Elastic Search tool navigate to the [**Evaluation**](toolEvaluation.md) page.
