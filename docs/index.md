@@ -9,7 +9,7 @@ To checkout the use cases of Elastic Search navigate to the [**Tool Description*
 To checkout the use cases of Elastic Search navigate to the [**Uses**](uses.md) page.
 
 ## How to install and run Elastic Search
-To checkout the use cases of Elastic Search navigate to the [**Installation**](runningTool.md) page.
+To checkout how to install Elastic Search navigate to the [**Installation**](runningTool.md) page.
 
 ## Our Evaluation of Elastic Search
 For our evaluation of the Elastic Search tool navigate to the [**Evaluation**](toolEvaluation.md) page.
