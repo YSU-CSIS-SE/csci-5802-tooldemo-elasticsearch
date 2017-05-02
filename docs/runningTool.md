@@ -63,7 +63,23 @@ The steps to setup and run Elasticsearch in Windows are as follows (for setup st
 ## Elasticsearch Index
 Let's add some data to our Elasticsearch server. To index a first JSON object we make a POST request to the REST API: `http://localhost:9200/<index>/<type>/[<id>]`.
 
-Index and type are required while the id part is optional If there isn't an index with that name on the server already one will be created using default configuration.
+Index and type are required while the id part is optional If there isn't an index with that name on the server already one will be created using default configuration. By default an index will be created with 5 shards and 1 replica for each primary shard.
+
+```
+{
+  PUT games
+  {
+    "settings" : {
+      "index" : {
+        "number_of_shards" : 4,
+        "number_of_replicas" : 3
+      }
+    }
+  }
+}
+```
+
+The above command would create an index called games with 4 shards and 3 replicas of the primary shards. These shards allow you to horizontally split/scale your current volume and distribute and parallelize operations across shards for increased performance and throughput.
 
 We index the following movie with the following Fiddler set up:
 
