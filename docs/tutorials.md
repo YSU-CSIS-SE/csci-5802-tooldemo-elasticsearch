@@ -2,8 +2,25 @@
 
 # Tutorials using Elasticsearch
 
+## First some key concepts
+
+**Node** - A single running instance of Elasticsearch.
+
+**Cluster** - A collection of one or more nodes (can index and search across all nodes in a cluster).
+
+**Index** - A collection of different types of documents and document properties.
+
+**Type/Mapping** - A collection of documents sharing a set of common fields present in the same index.
+
+**Document** - A collection of fields in a specific manner defined in JSON format (belongs to a type inside an index with a unique UID).
+
+**Shard** - Horizontally subdivided indexes in a node (contains all the properties of a document with less JSON objects than an index).
+
+**Replicas** - Copy of an index or shard (allows for parallel searches and improved redundancy).
+
 ## Video Tutorial
-A video tutorial walking through the following tutorials can be found on [Youtube]().
+A video tutorial walking through the following tutorials can be found on [Youtube](https://www.youtube.com/watch?v=052AIXklNHU&feature=youtu.be) as well as embedded below.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/052AIXklNHU" frameborder="0" allowfullscreen></iframe>
 
 ## Elasticsearch Index
 Let's add some data to our Elasticsearch server. To index a first JSON object we make a POST request to the REST API: `http://localhost:9200/<index>/<type>/[<id>]`.
