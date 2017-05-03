@@ -4,7 +4,7 @@
 
 The main use scenario that all of the use cases below branch off of is the need to have a full-text search engine on an HTTP web interface.
 
-Throughout the scenarios below documents can be replaced by any database collection.
+Throughout the scenarios below "documents" can be replaced by "any database collection".
 
 | Use Case | Description  |
 |---- | ---------- |
