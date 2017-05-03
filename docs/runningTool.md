@@ -1,8 +1,6 @@
 ### <a href="https://ysu-csis-se.github.io/csci-5802-tooldemo-elasticsearch/">Back</a>
 
-# How to run Elasticsearch
-
-## Getting Started with Elasticsearch
+# Getting Started with Elasticsearch
 The steps to setup and run Elasticsearch in Windows are as follows (for setup steps on Linux & UNIX machines see [https://www.tutorialspoint.com/elasticsearch/elasticsearch_installation.htm](https://www.tutorialspoint.com/elasticsearch/elasticsearch_installation.htm)):
 
 1. Install/check for Java 7 or higher.
@@ -15,7 +13,7 @@ The steps to setup and run Elasticsearch in Windows are as follows (for setup st
 
   ![Java Home](/images/javahome.png)
 
-6. You should see a lot of output in your command prompt and it should not terminate. Your Elasticsearch web interface and server is now up and running. Browse to **http://localhost:9200** to check if the server is running. It should return a JSON object with information about the installed Elasticsearch.
+6. You should see a lot of output in your command prompt and it should not terminate. Your Elasticsearch web interface and server is now up and running. Browse to [**http://localhost:9200**](http://localhost:9200) to check if the server is running. It should return a JSON object with information about the installed Elasticsearch.
 
   ```
   {
@@ -42,4 +40,4 @@ The steps to setup and run Elasticsearch in Windows are as follows (for setup st
 
   ![Fiddler Start](/images/fiddlerstart.png)
 
-This would be a good time to head to the [Tutorials](tutorials.md) page to run some Elasticsearch http request examples with Fiddler.
+This would be a good time to head to the [Tutorials](tutorials.md) page to run some Elasticsearch HTTP request examples with Fiddler.
