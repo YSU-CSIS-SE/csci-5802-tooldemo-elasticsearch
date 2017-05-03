@@ -2,7 +2,7 @@
 
 # Further References and Notable Users
 
-For more information about the uses of Elastic Search [https://www.elastic.co/blog/found-uses-of-elasticsearch](https://www.elastic.co/blog/found-uses-of-elasticsearch) and for more users of Elasticsearch checkout [https://www.elastic.co/use-cases](https://www.elastic.co/use-cases).
+For more information about the uses of Elasticsearch [https://www.elastic.co/blog/found-uses-of-elasticsearch](https://www.elastic.co/blog/found-uses-of-elasticsearch) and for more users of Elasticsearch checkout [https://www.elastic.co/use-cases](https://www.elastic.co/use-cases).
 
 **Notable Users of Elasticsearch**
 * **The New York Times** - Providing search for all 164 years of published articles

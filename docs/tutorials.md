@@ -152,7 +152,7 @@ The **match** query is of type boolean. It means that the text provided is analy
     }
 }
 ```
-This query finds all of the movies with title containing the string "kill". We will not spend more time talking about matching, because **match** is most useful when paired with filtering and fuzzy searches.
+finds all of the movies with title containing the string "kill". We will not spend more time talking about matching, because **match** is most useful when paired with filtering and fuzzy searches.
 
 For filtering let us add another JSON object to our Elasticsearch server to make it more interesting to **match** and **filter**.
 ```
