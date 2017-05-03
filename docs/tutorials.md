@@ -20,7 +20,9 @@
 
 ## Video Tutorial
 A video tutorial walking through the following tutorials can be found on [Youtube](https://www.youtube.com/watch?v=052AIXklNHU&feature=youtu.be) as well as embedded below.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/052AIXklNHU" frameborder="0" allowfullscreen></iframe>
+
 
 ## Elasticsearch Index
 Let's add some data to our Elasticsearch server. To index a first JSON object we make a POST request to the REST API: `http://localhost:9200/<index>/<type>/[<id>]`.
@@ -137,3 +139,151 @@ Giving the following response:
   }
 }
 ```
+
+### Match & Filter
+The **match** query is of type boolean. It means that the text provided is analyzed and the analysis process constructs a boolean query from the provided text. It also matches a text or phrase with the values of one or more fields. For example,
+
+```
+{
+  "query": {
+        "match": {
+          "title": "kill"
+        }
+    }
+}
+```
+This query finds all of the movies with title containing the string "kill". We will not spend more time talking about matching, because **match** is most useful when paired with filtering and fuzzy searches.
+
+For filtering let us add another JSON object to our Elasticsearch server to make it more interesting to **match** and **filter**.
+```
+{
+    "title": "Kill Bill: Vol. 1",
+    "director": "Quentin Tarantino",
+    "year": 2003,
+    "genres": ["Action", "Crime", "Thriller"]
+}
+```
+
+Now when we find all of the movies with title containing the string "kill" there will be two JSON objects returned. However, what do we do if we wanted to filter out those movies with year not equal to 1962? Well, we can use **match**, **filter**, and **bool** in the following way (you must do filtering this way, **filtered** queries have been deprecated).
+
+```
+POST http://localhost:9200/movies/movie/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match": {
+          "title": "kill"
+        }
+      },
+      "filter": {
+        "term": {
+          "year": "1962"
+        }
+      }
+    }
+  }
+}
+
+```
+
+As you can see below, because we filtered by the year 1962 we did not get the "Kill Bill: Vol. 1" movie back as a JSON object.
+
+```
+{
+  "took":64,
+  "timed_out":false,
+  "_shards":{
+    "total":5,
+    "successful":5,
+    "failed":0
+  },
+  "hits":{
+    "total":1,
+    "max_score":0.6099695,
+    "hits":[{
+      "_index":"movies",
+      "_type":"movie",
+      "_id":"4",
+      "_score":0.6099695,
+      "_source":{
+        "title": "To Kill a Mockingbird",
+        "director": "Robert Mulligan",
+        "year": 1962
+      }
+    }]
+  }
+}
+```
+
+### Fuzzy Searches
+If you anticipate human error in your searches, such as misspellings, then fuzzy searches are for you. Elasticsearch supports many different fuzzy requests and fuzzy JSON syntax. However, the most versatile way to make a fuzzy search request can be found below using **match** and the **fuzziness** option (which must be present for the fuzzy search to work). For more information about fuzzy searching and other acceptable fuzzy search request syntax check out [https://www.elastic.co/blog/found-fuzzy-search](https://www.elastic.co/blog/found-fuzzy-search).
+
+```
+POST http://localhost:9200/movies/movie/_search
+{
+  "query": {
+    "match": {
+      "title": {
+        "query": "kiilll",
+        "fuzziness": 2
+      }
+    }
+  }
+}
+```
+
+In the above request, we are searching our data for JSON objects with titles that contain a string very close to the string "kiilll". Below you can see the response from this request, which is as we would expect.
+
+```
+{
+  "took":333,
+  "timed_out":false,
+  "_shards":{
+    "total":5,
+    "successful":5,
+    "failed":0
+  },
+  "hits":{
+    "total":2,
+    "max_score":0.30498475,
+    "hits":[{
+      "_index":"movies",
+      "_type":"movie",
+      "_id":"4",
+      "_score":0.30498475,
+      "_source":{
+        "title": "To Kill a Mockingbird",
+        "director": "Robert Mulligan",
+        "year": 1962
+      }
+    },
+    {
+      "_index":"movies",
+      "_type":"movie",
+      "_id":"5",
+      "_score":0.14384104,
+      "_source":{
+        "title": "Kill Bill: Vol. 1",
+        "director": "Quentin Tarantino",
+        "year": 2003,
+        "genres": ["Action", "Crime", "Thriller"]
+      }
+    }]
+  }
+}
+```
+
+There are also many other options you may supply to your fuzzy search as seen below.
+
+```
+{
+    "value": "kiilll",
+    "boost": 1.0,
+    "fuzziness": 2, //maximum edit distance
+    "prefix_length": 0, //number of initial characters which will not be fuzzied
+    "max_expansions": 100 //maximum number of terms that the fuzzy query will expand to
+}
+```
+
+These mini-tutorials are not comprehensive. In fact, Elasticsearch has many many more JSON APIs found [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html). Also, for more comprehensive tutorials on Elasticsearch see [http://joelabrahamsson.com/elasticsearch-101/](http://joelabrahamsson.com/elasticsearch-101/) and [https://www.tutorialspoint.com/elasticsearch/index.htm](https://www.tutorialspoint.com/elasticsearch/index.htm).
