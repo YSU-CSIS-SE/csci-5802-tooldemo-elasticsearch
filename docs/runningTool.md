@@ -2,22 +2,6 @@
 
 # How to run Elasticsearch
 
-## First some key concepts
-
-**Node** - A single running instance of Elasticsearch.
-
-**Cluster** - A collection of one or more nodes (can index and search across all nodes in a cluster).
-
-**Index** - A collection of different types of documents and document properties.
-
-**Type/Mapping** - A collection of documents sharing a set of common fields present in the same index.
-
-**Document** - A collection of fields in a specific manner defined in JSON format (belongs to a type inside an index with a unique UID).
-
-**Shard** - Horizontally subdivided indexes in a node (contains all the properties of a document with less JSON objects than an index).
-
-**Replicas** - Copy of an index or shard (allows for parallel searches and improved redundancy).
-
 ## Getting Started with Elasticsearch
 The steps to setup and run Elasticsearch in Windows are as follows (for setup steps on Linux & UNIX machines see [https://www.tutorialspoint.com/elasticsearch/elasticsearch_installation.htm](https://www.tutorialspoint.com/elasticsearch/elasticsearch_installation.htm)):
 
@@ -48,7 +32,7 @@ The steps to setup and run Elasticsearch in Windows are as follows (for setup st
     "tagline" : "You Know, for Search"
   }
   ```
-7. Now that Elasticsearch is up and running we can interact with its JSON based REST API using any HTTP client to talk to it (curl, [Sense](https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgmfcfig?hl=en), [RESTClient](https://addons.mozilla.org/en-US/firefox/addon/restclient/)). We will use [Fiddler](https://www.telerik.com/download/fiddler).
+7. Now that Elasticsearch is up and running we can interact with its JSON based REST API using any HTTP client to talk to it (curl, [Sense](https://chrome.google.com/webstore/detail/sense-beta/lhjgkmllcaadmopgmanpapmpjgmfcfig?hl=en), [RESTClient](https://addons.mozilla.org/en-US/firefox/addon/restclient/)). We will use [Fiddler](https://www.telerik.com/download/fiddler) in the tutorials on the [Tutorials](tutorials.md) page.
 
 8. Follow the Fiddler link above and download the .exe file to install Fiddler on Windows.
 
@@ -57,3 +41,5 @@ The steps to setup and run Elasticsearch in Windows are as follows (for setup st
 9. Once you have installed Fiddler, launch it.
 
   ![Fiddler Start](/images/fiddlerstart.png)
+
+This would be a good time to head to the [Tutorials](tutorials.md) page to run some Elasticsearch http request examples with Fiddler.
